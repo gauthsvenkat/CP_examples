@@ -31,11 +31,11 @@ model = cp_model.CpModel()
 base = 10
 
 # create the variables
-s = model.NewIntVar(0, base - 1, 's')
+s = model.NewIntVar(1, base - 1, 's')
 e = model.NewIntVar(0, base - 1, 'e')
 n = model.NewIntVar(0, base - 1, 'n')
 d = model.NewIntVar(0, base - 1, 'd')
-m = model.NewIntVar(0, base - 1, 'm')
+m = model.NewIntVar(1, base - 1, 'm')
 o = model.NewIntVar(0, base - 1, 'o')
 r = model.NewIntVar(0, base - 1, 'r')
 y = model.NewIntVar(0, base - 1, 'y')

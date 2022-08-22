@@ -12,11 +12,11 @@ from ortools.sat.python import cp_model
 model = cp_model.CpModel()
 
 # create the variables
-s = model.NewIntVar(0, 9, 's')
+s = model.NewIntVar(1, 9, 's') # sus
 e = model.NewIntVar(0, 9, 'e')
 n = model.NewIntVar(0, 9, 'n')
 d = model.NewIntVar(0, 9, 'd')
-m = model.NewIntVar(0, 9, 'm')
+m = model.NewIntVar(1, 9, 'm') # sus
 o = model.NewIntVar(0, 9, 'o')
 r = model.NewIntVar(0, 9, 'r')
 y = model.NewIntVar(0, 9, 'y')
@@ -41,4 +41,3 @@ print('   + {} {} {} {}'.format(solver.Value(m), solver.Value(o), solver.Value(r
 print('  ----------')
 print(' = {} {} {} {} {}'.format(solver.Value(m), solver.Value(o), solver.Value(n), solver.Value(e), solver.Value(y)))
 print('  ----------')
-
