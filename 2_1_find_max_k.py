@@ -1,5 +1,6 @@
 from ortools.sat.python import cp_model
 import random; random.seed(42)
+from time import time
 
 # init the problem variables
 lb, ub = 0, 100
@@ -21,11 +22,14 @@ k_arr = [model.NewIntVarFromDomain(cp_model.Domain.FromValues(arr), 'k_%i' % i) 
 
 # add the constraints
 model.AddAllDifferent(k_arr)
+# model.AddDecisionStrategy(k_arr, cp_model.CHOOSE_FIRST, cp_model.SELECT_MAX_VALUE)
 model.Maximize(sum(k_arr))
 #endregion
 
 # init the solver and solve the model
 solver = cp_model.CpSolver()
+time_start = time()
 status = solver.Solve(model)
+time_end = time()
 
-print('Solution: {} with sum = {}'.format([solver.Value(k_arr[i]) for i in range(k)], solver.ObjectiveValue()))
+print('Solution: {} with sum = {}\nSolved in {}'.format([solver.Value(k_arr[i]) for i in range(k)], solver.ObjectiveValue(), time_end - time_start))
